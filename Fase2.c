@@ -1,28 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Node {
+typedef struct Connection {
+  int ID;
+  struct Connection *next;
+} Connection;
+
+typedef struct Graph {
   int num;
-  struct Node *right, *down;
-} Node;
+  Connection *connections;
+  struct GR *next;
+} GR;
 
-Node *InsertRight(Node *node, int number) {
-  Node *new = (Node *)malloc(sizeof(Node));
-
-  if (new == NULL)
-    return node;
-
-  new->num = number;
-  new->right = node;
-  new->down = NULL;
-
-  return new;
-}
-
-Node *InsertLeft(Node *new) {}
-
-int main() {
-  Node *matrix = NULL;
-
-  matrix = InsertRight(matrix, 9);
-}
+int main() { return 0; }
