@@ -27,13 +27,26 @@ GR *InsertNode(GR *matrix, int number) {
   return new;
 }
 
-/*void InsertConnection(GR *matrix, int ID, int link) {
+GR *InsertConnection(GR *matrix, int Id, int link) {
   Connection *new = (Connection *)malloc(sizeof(Connection));
+
   if (new == NULL) {
     perror("error allocating memory");
-    return;
+    return matrix;
   }
-}*/
+
+  GR *aux = matrix;
+
+  for (; aux != NULL; aux = aux->next) {
+    if (aux->num == Id) {
+      new->next = aux->connections;
+      aux->connections = new;
+      new->ID = Id;
+    }
+  }
+
+  return matrix;
+}
 
 int main() {
   GR *matrix = NULL;
